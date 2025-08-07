@@ -83,8 +83,7 @@ O projeto utiliza uma paleta de cores vintage inspirada em tons terrosos e aconc
 cd backend
 npm install
 npm start
-#### Frontend
-```bash
+
 cd frontend/reading-planner-frontend
 pnpm install
 pnpm run dev --host
