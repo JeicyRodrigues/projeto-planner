@@ -19,10 +19,6 @@ O projeto utiliza uma paleta de cores vintage inspirada em tons terrosos e aconc
 
 ### Frontend
 - **React.js** - Framework principal
-- **Tailwind CSS** - Estilização
-- **shadcn/ui** - Componentes de interface
-- **Lucide React** - Ícones
-- **Vite** - Build tool
 
 ### Backend
 - **Node.js** - Runtime
@@ -34,23 +30,18 @@ O projeto utiliza uma paleta de cores vintage inspirada em tons terrosos e aconc
 
 ### ✅ Implementadas
 - **Cadastro de livros** com campos completos:
-  - Título e autor
-  - Capa (URL da imagem)
-  - Datas de início e término
-  - Formato (Físico/Digital)
-  - Frase favorita
-  - Personagens principais
+  - **Título e autor**
+  - **Capa** (URL da imagem)
+  - **Datas de início e término**
+  - **Formato** (Físico/Digital)
+  - **Frase favorita**
+  - **Personagens principais**
   - **Sinopse** (novo campo)
   - **Minha Opinião** (novo campo)
   - **Classificação por estrelas** (sistema interativo)
-  - Categorização com ícones
+  
 
-- **Categorias disponíveis**:
-  - Romance (❤️)
-  - Drama (⭕)
-  - Fantasia (⭐)
-  - Reflexão (🔺)
-  - Plot Twist (⚡)
+
 
 - **Visualização em cards** estilo vintage
 - **Filtros por categoria**
@@ -81,7 +72,7 @@ cd backend
 npm install
 npm start
 ```
-O servidor rodará na porta 5000.
+O servidor rodará na porta 5001.
 
 ### Frontend
 ```bash
@@ -89,27 +80,8 @@ cd frontend/reading-planner-frontend
 pnpm install
 pnpm run dev --host
 ```
-O frontend rodará na porta 5173.
+O frontend rodará na porta 3000.
 
-## 📁 Estrutura do Projeto
-
-```
-reading-planner/
-├── backend/
-│   ├── server.js          # Servidor Express
-│   ├── package.json       # Dependências do backend
-│   ├── .env               # Configurações
-│   └── books.json         # Dados dos livros (gerado automaticamente)
-├── frontend/
-│   └── reading-planner-frontend/
-│       ├── src/
-│       │   ├── App.jsx   # Componente principal
-│       │   ├── App.css   # Estilos vintage
-│       │   └── ...
-│       ├── package.json  # Dependências do frontend
-│       └── ...
-└── README.md
-```
 
 ## 🎨 Paleta de Cores Detalhada
 
@@ -123,14 +95,6 @@ reading-planner/
 }
 ```
 
-## 📱 Responsividade
-
-O site foi desenvolvido com design responsivo, adaptando-se automaticamente a:
-- **Desktop** (1024px+)
-- **Tablet** (768px - 1023px)
-- **Mobile** (até 767px)
-
-## 🔧 API Endpoints
 
 ### Livros
 - `GET /api/books` - Lista todos os livros
@@ -140,23 +104,13 @@ O site foi desenvolvido com design responsivo, adaptando-se automaticamente a:
 - `DELETE /api/books/:id` - Remove um livro
 - `GET /api/books/category/:category` - Filtra por categoria
 
-## 🎯 Próximas Melhorias
 
-- Upload de imagens local
-- Busca por texto
-- Estatísticas de leitura
-- Exportação de dados
-- Sistema de avaliações
-- Integração com APIs de livros
-- Modo escuro
-- Backup automático
 
 ## 👨‍💻 Desenvolvimento
 
 Projeto desenvolvido com foco em:
 - **UX/UI vintage** e aconchegante
 - **Código limpo** e bem estruturado
-- **Responsividade** completa
 - **Performance** otimizada
 - **Acessibilidade** básica
 
