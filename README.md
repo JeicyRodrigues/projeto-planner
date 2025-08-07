@@ -87,3 +87,22 @@ npm start
 cd frontend/reading-planner-frontend
 pnpm install
 pnpm run dev --host
+
+
+📁 Estrutura do Projeto
+
+
+reading-planner/
+├── backend/
+│   ├── server.js          # Servidor Express
+│   ├── package.json       # Dependências do backend
+│   ├── .env              # Configurações
+│   └── books.json        # Dados dos livros (gerado automaticamente)
+└── frontend/
+    └── reading-planner-frontend/
+        ├── src/
+        │   ├── App.jsx   # Componente principal
+        │   ├── App.css   # Estilos vintage
+        │   └── ...
+        ├── package.json  # Dependências do frontend
+        └── ...
