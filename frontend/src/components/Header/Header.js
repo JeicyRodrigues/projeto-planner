@@ -22,14 +22,11 @@ const Logo = styled.img`
   height: 250px;
 `;
 
-const Titulo = styled.h1`
-  font-size: 3em;
-  margin: 0;
-`;
+
 
 const Frase = styled.p`
   font-family: 'Special Elite', cursive;
-  font-size: 1.1em;
+  font-size: 1.5rem;
   margin-top: 10px;
 `;
 
@@ -37,7 +34,7 @@ export default function Header() {
   return (
     <HeaderContainer>
       <Logo src="/logo.png" alt="Logo do Planner Literário"/>
-      <Titulo>Diário de Leitura</Titulo>
+      
       <Frase>
         “Palavras são, na minha nada humilde opinião, nossa inesgotável fonte de magia.”
       </Frase>
