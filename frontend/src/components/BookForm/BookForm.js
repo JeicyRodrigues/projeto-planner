@@ -1,10 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, forwardRef } from "react";
 import styled from "styled-components";
-import { createGlobalStyle } from 'styled-components';
-
-const GlobalStyle = createGlobalStyle`
-  @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Special+Elite&display=swap');
-`;
 
 const Form = styled.form`
   max-width: 600px;
@@ -95,14 +90,14 @@ const BotaoCancelar = styled.button`
   }
 `;
 
-export default function BookForm({ onSubmit, livroEditando, cancelarEdicao }) {
+const BookForm = forwardRef(({ onSubmit, livroEditando, cancelarEdicao }, ref) => {
   const [form, setForm] = useState({
     nome: "",
     capaUrl: "",
     dataInicio: "",
     dataTermino: "",
     sinopse: "",
-    formato: "",
+    categoria: "",
     personagens: "",
     opiniao: "",
     classificacao: "3",
@@ -135,7 +130,7 @@ export default function BookForm({ onSubmit, livroEditando, cancelarEdicao }) {
       dataInicio: "",
       dataTermino: "",
       sinopse: "",
-      formato: "",
+      categoria: "",
       personagens: "",
       opiniao: "",
       classificacao: "3",
@@ -144,7 +139,7 @@ export default function BookForm({ onSubmit, livroEditando, cancelarEdicao }) {
   }
 
   return (
-    <Form onSubmit={handleSubmit}>
+    <Form ref={ref} onSubmit={handleSubmit}>
       <Field>
         <Label htmlFor="nome">Nome do Livro</Label>
         <Input
@@ -206,12 +201,12 @@ export default function BookForm({ onSubmit, livroEditando, cancelarEdicao }) {
       </Field>
 
       <Field>
-        <Label htmlFor="formato">Formato</Label>
+        <Label htmlFor="categoria">Categoria</Label>
         <Input
-          id="formato"
-          name="formato"
+          id="categoria"
+          name="categoria"
           type="text"
-          value={form.formato}
+          value={form.categoria}
           onChange={handleChange}
           required
         />
@@ -280,4 +275,6 @@ export default function BookForm({ onSubmit, livroEditando, cancelarEdicao }) {
       )}
     </Form>
   );
-}
+});
+
+export default BookForm;

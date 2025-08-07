@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
-
 import Header from "./components/Header/Header.js";
 import BookForm from "./components/BookForm/BookForm.js";
 import BookCard from "./components/BookCard/BookCard.js";
@@ -9,7 +8,7 @@ const BASE_URL = "/api/books";
 
 const GridLivros = styled.div`
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 colunas iguais */
+  grid-template-columns: repeat(3, 1fr);
   gap: 20px;
   padding: 40px;
   width: 100%;
@@ -17,11 +16,11 @@ const GridLivros = styled.div`
   border-radius: 8px;
 
   @media (max-width: 900px) {
-    grid-template-columns: repeat(2, 1fr); /* 2 colunas para tablets */
+    grid-template-columns: repeat(2, 1fr);
   }
 
   @media (max-width: 600px) {
-    grid-template-columns: 1fr; /* 1 coluna para celulares */
+    grid-template-columns: 1fr;
   }
 `;
 
@@ -30,6 +29,8 @@ export default function App() {
   const [carregando, setCarregando] = useState(true);
   const [erro, setErro] = useState(null);
   const [livroEditando, setLivroEditando] = useState(null);
+  
+  const formRef = useRef(null);
 
   useEffect(() => {
     fetch(BASE_URL)
@@ -62,7 +63,7 @@ export default function App() {
       })
       .catch((err) => alert(err.message));
   }
-
+  
   function atualizarLivro(livroAtualizado) {
     fetch(`${BASE_URL}/${livroAtualizado.id}`, {
       method: "PUT",
@@ -83,7 +84,7 @@ export default function App() {
       })
       .catch((err) => alert(err.message));
   }
-
+  
   function removerLivro(id) {
     fetch(`${BASE_URL}/${id}`, { method: "DELETE" })
       .then((res) => {
@@ -93,30 +94,35 @@ export default function App() {
       .catch((err) => alert(err.message));
   }
 
+  function handleEdit(livro) {
+    setLivroEditando(livro);
+    if (formRef.current) {
+      formRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
+
   if (carregando) return <p>Carregando livros...</p>;
   if (erro) return <p style={{ color: "red" }}>{erro}</p>;
 
   return (
     <>
       <Header />
-
       <BookForm
+        ref={formRef}
         onSubmit={livroEditando ? atualizarLivro : adicionarLivro}
         livroEditando={livroEditando}
         cancelarEdicao={() => setLivroEditando(null)}
       />
-
       {livros.length === 0 && (
         <p style={{ textAlign: "center" }}>Nenhum livro cadastrado ainda.</p>
       )}
-
       <GridLivros>
         {livros.map((livro) => (
           <BookCard
             key={livro.id}
             livro={livro}
             onDelete={removerLivro}
-            onEdit={() => setLivroEditando(livro)}
+            onEdit={handleEdit}
           />
         ))}
       </GridLivros>

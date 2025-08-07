@@ -1,49 +1,37 @@
 import React from "react";
-import styled, { createGlobalStyle } from "styled-components";
+import styled from "styled-components";
 
-const GlobalStyle = createGlobalStyle`
-  @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Special+Elite&display=swap');
-  @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-`;
+// As importações de estilos globais foram removidas daqui, pois já estão centralizadas.
 
 const Card = styled.div`
   display: flex;
-  flex-direction: row;
-  align-items: flex-start;
+  flex-direction: column;
   background-color: #FFF8F0;
   box-shadow: 0px 4px 8px rgba(93, 58, 0, 0.2);
-  border-radius: 50px;
+  border-radius: 20px;
   padding: 20px;
-  justify-content: space-between;
   gap: 20px;
   width: 100%;
   max-width: 500px;
   font-family: "Special Elite", system-ui;
-  flex: 1 1 300px;
+`;
 
-  @media (max-width: 600px) {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
+const HeaderCard = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 20px;
+`;
 
-    img {
-      width: 100%;
-      height: auto;
-    }
-  }
+const InfoBasica = styled.div`
+  display: flex;
+  flex-direction: column;
 `;
 
 const ImgLivro = styled.img`
   width: 150px;
   border-radius: 6px;
   object-fit: cover;
-`;
-
-const Conteudo = styled.div`
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
 `;
 
 const Titulo = styled.h2`
@@ -64,13 +52,18 @@ const Texto = styled.p`
   color: #5D3A00;
   max-width: 100%;
   margin: 4px 0;
-  font-family: "Poppins";
+  font-family: "Quicksand", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+  font-size: 13px;
+  line-height: 1.5;
 `;
 
-const BlocoExpandido = styled.div`
-  flex-grow: 1;
+const ConteudoDetalhado = styled.div`
   display: flex;
   flex-direction: column;
+  gap: 10px;
 `;
 
 const BotoesAcoes = styled.div`
@@ -101,38 +94,34 @@ const BotaoEditar = styled(BotaoRemover)``;
 export default function BookCard({ livro, onDelete, onEdit }) {
   return (
     <Card>
-      <ImgLivro src={livro.capaUrl} alt={`Capa do livro ${livro.nome}`} />
-      <Conteudo>
-        <Titulo>{livro.nome}</Titulo>
-
-        <Subtitulo>Formato</Subtitulo>
-        <Texto>{livro.formato}</Texto>
-
-        <Subtitulo>Período</Subtitulo>
-        <Texto>{livro.dataInicio} até {livro.dataTermino}</Texto>
-
-        <Subtitulo>Classificação</Subtitulo>
-        <Texto>{livro.classificacao} ⭐</Texto>
-
-        <BlocoExpandido>
-          <Subtitulo>Sinopse</Subtitulo>
-          <Texto>{livro.sinopse}</Texto>
-
-          <Subtitulo>Opinião</Subtitulo>
-          <Texto>{livro.opiniao}</Texto>
-
-          <Subtitulo>Personagens Principais</Subtitulo>
-          <Texto>{livro.personagens}</Texto>
-
-          <Subtitulo>Frase Favorita</Subtitulo>
-          <Texto>“{livro.fraseFavorita}”</Texto>
-        </BlocoExpandido>
-
-        <BotoesAcoes>
-          <BotaoRemover onClick={() => onDelete(livro.id)}>Remover</BotaoRemover>
-          <BotaoEditar onClick={() => onEdit(livro)}>Editar</BotaoEditar>
-        </BotoesAcoes>
-      </Conteudo>
+      <HeaderCard>
+        <ImgLivro src={livro.capaUrl} alt={`Capa do livro ${livro.nome}`} />
+        <InfoBasica>
+          <Titulo>{livro.nome}</Titulo>
+          <Subtitulo>Categoria</Subtitulo>
+          <Texto>{livro.categoria}</Texto>
+          <Subtitulo>Período</Subtitulo>
+          <Texto>{livro.dataInicio} até {livro.dataTermino}</Texto>
+          <Subtitulo>Classificação</Subtitulo>
+          <Texto>{livro.classificacao} ⭐</Texto>
+        </InfoBasica>
+      </HeaderCard>
+      
+      <ConteudoDetalhado>
+        <Subtitulo>Sinopse</Subtitulo>
+        <Texto>{livro.sinopse}</Texto>
+        <Subtitulo>Opinião</Subtitulo>
+        <Texto>{livro.opiniao}</Texto>
+        <Subtitulo>Personagens Principais</Subtitulo>
+        <Texto>{livro.personagens}</Texto>
+        <Subtitulo>Frase Favorita</Subtitulo>
+        <Texto>“{livro.fraseFavorita}”</Texto>
+      </ConteudoDetalhado>
+      
+      <BotoesAcoes>
+        <BotaoRemover onClick={() => onDelete(livro.id)}>Remover</BotaoRemover>
+        <BotaoEditar onClick={() => onEdit(livro)}>Editar</BotaoEditar>
+      </BotoesAcoes>
     </Card>
   );
 }
