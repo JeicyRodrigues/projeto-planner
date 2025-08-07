@@ -72,7 +72,19 @@ O projeto utiliza uma paleta de cores vintage inspirada em tons terrosos e aconc
 -   Tipografia temática
 -   Sistema de classificação interativo com estrelas
 
+### 🛠️ Como Executar
 
+#### Pré-requisitos
+-   `Node.js` (versão 14 ou superior)
+-   `npm` ou `pnpm`
 
-
-
+#### Backend
+```bash
+cd backend
+npm install
+npm start
+#### Frontend
+```bash
+cd frontend/reading-planner-frontend
+pnpm install
+pnpm run dev --host
