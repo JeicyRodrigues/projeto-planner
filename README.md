@@ -82,20 +82,6 @@ pnpm run dev --host
 ```
 O frontend rodará na porta 3000.
 
-
-## 🎨 Paleta de Cores Detalhada
-
-```css
-:root {
-  --primary: #702C2B;      /* Marrom escuro - textos principais */
-  --secondary: #C56869;    /* Rosa acobreado - acentos */
-  --tertiary: #DB9F95;     /* Rosa claro - elementos secundários */
-  --background: #F3D7D4;   /* Rosa muito claro - fundo */
-  --card: #EBD8CE;         /* Bege claro - cards */
-}
-```
-
-
 ### Livros
 - `GET /api/books` - Lista todos os livros
 - `POST /api/books` - Adiciona um novo livro
